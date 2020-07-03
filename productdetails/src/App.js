@@ -9,13 +9,13 @@ function App() {
   return (
    
     <Provider store={store}>
-       {/* <MainView></MainView> */}
-      <HashRouter basename="productlist">
-    <Switch>
-      <Route exect path='/productslist' component={MainView} />         
-      <Redirect to="/productslist" />
-    </Switch>
-  </HashRouter> 
+       <MainView></MainView>
+     {/* <HashRouter basename='/productslist'>
+       <Switch>
+          <Route exect path='/productslist' component={MainView}/>
+        <Redirect to = '/'/>
+       </Switch>
+    </HashRouter>  */}
     </Provider>     
 
   );

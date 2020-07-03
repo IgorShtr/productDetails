@@ -24,7 +24,7 @@ export const Actionactivity = ()=>{
         return <ActivityAction> ADD POLL</ActivityAction>;
 
       default:
-        return null;
+        return <ActivityAction></ActivityAction>;
     }
   };
   return (
@@ -33,5 +33,6 @@ export const Actionactivity = ()=>{
 }
 
 const ActivityAction = styled.div`
-margin-top: 10px;
+padding-top: 10px;
+height: 180px;
 `

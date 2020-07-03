@@ -12,7 +12,6 @@ export const AddLinkAction = () => {
   const [titleValidation, setTitleValidation] = useState(true);
 
   const addLink = (e) => {
-
     e.preventDefault();
     if ((linkContent.length > 0) && (titleContent.length > 0)) {
       const link = {
@@ -27,8 +26,7 @@ export const AddLinkAction = () => {
       setLinkValidation(true);
       setTitleValidation(true)
     }
-    else {
-      console.log(!linkContent, titleContent.length)
+    else {     
       !linkContent ? setLinkValidation(false) : setLinkValidation(true);
       !titleContent ? setTitleValidation(false) : setTitleValidation(true);
     }
@@ -36,7 +34,7 @@ export const AddLinkAction = () => {
 
   return (
     < Conteiner>
-      <Section>
+      <Section>        
         <p>Link</p>
         <LinkInput
           type="text"
@@ -59,8 +57,9 @@ export const AddLinkAction = () => {
 }
 
 const Conteiner = styled.div`
-width: 270px;
-padding: 0 10px;
+width: 240px;
+height: 190px;
+// padding: 0 10px;
 display: flex;
 flex-direction:column;
 p{
@@ -70,20 +69,20 @@ p{
 }
 `
 const LinkInput = styled.input`
-width: 95%;
+width: 100%;
 height: 30px;
 border:${props => props.linkValidation ? "1px solid grey" : "1px solid red"} ;
 border-radius: 5px;
 `
 const TitleInput = styled.input`
-width: 95%;
+width: 100%;
 height: 30px;
 border:${props => props.titleValidation ? "1px solid grey" : "1px solid red"} ;
 border-radius: 5px;
 `
 const Section = styled.div`
 margin-top: 10px;
-width: 100%;
+width: 98%;
 p:last-child{
   height: 12px;
   color: red;
@@ -94,7 +93,7 @@ p:last-child{
 const AddBtn = styled.button`
 margin-top: 20px;
 align-self: flex-end;
-width: 75px;
+width: 50px;
 cursor: pointer;
 padding: 5px;
 background-color: #ffca18;

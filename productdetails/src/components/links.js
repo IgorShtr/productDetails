@@ -30,7 +30,7 @@ overflow:auto;
 height: 150px;
 `
 const LinkMarkers = styled.div`
-width: inherit;
+width: 70%;
 margin: 10px auto;
 padding: 5px 10px;
 background-color: #ffca18;

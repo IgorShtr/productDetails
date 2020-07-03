@@ -10,8 +10,8 @@ const dispatch = useDispatch();
 const chosenActivity = useSelector(state => state.productDetails.chosenActivity);
 const linksData = useSelector(state => state.productDetails.links);
 const saveclick = () =>{
+  dispatch(setModalState())
 alert(JSON.stringify(linksData));
-dispatch(setModalState())
 }
 
 const actionBtn = actionsList.map(it=>(
@@ -24,7 +24,7 @@ const actionBtn = actionsList.map(it=>(
 
   return(
     <ActionsSection>
-    <span onClick={()=>dispatch(setModalState())}>&#10005;</span>
+    <span onClick={()=>{dispatch(setModalState()); dispatch(setСhosenActivity(""))}}>&#10005;</span>
     <div>Chose action</div>
     <ActionBtnSection>
        {actionBtn}
@@ -42,7 +42,7 @@ const actionBtn = actionsList.map(it=>(
 const ActionsSection = styled.div`
 border-left: 1px solid lightgrey;
 padding: 10px;
-max-width:270px;
+width:270px;
 display: flex;
 flex-direction: column;
 align-items: center; 

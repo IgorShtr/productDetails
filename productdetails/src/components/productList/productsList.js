@@ -22,7 +22,7 @@ flex-direction: column;
 align-items: center;
  img {
    height: 300px;
-   width: 400px;
+   width: 300px;
  }
   div:first-child {
    width: fit-content;
