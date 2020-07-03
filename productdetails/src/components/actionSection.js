@@ -1,14 +1,18 @@
 import React from 'react';
 import {useDispatch, useSelector} from 'react-redux'
 import styled from 'styled-components';
-import {setСhosenActivity} from '../store/reduser';
+import {setСhosenActivity, setModalState, setClearActionActivities} from '../store/reduser';
 import {Actionactivity} from './activityAction'
 
 export const  Actions = () =>{
 const actionsList = [ "ADD LINK", "ADD VOUTE", "ADD PAIMENT", "ADD POLL"];
 const dispatch = useDispatch();
 const chosenActivity = useSelector(state => state.productDetails.chosenActivity);
-
+const linksData = useSelector(state => state.productDetails.links);
+const saveclick = () =>{
+alert(JSON.stringify(linksData));
+dispatch(setModalState())
+}
 
 const actionBtn = actionsList.map(it=>(
   <ActionBtn 
@@ -20,12 +24,16 @@ const actionBtn = actionsList.map(it=>(
 
   return(
     <ActionsSection>
-    <span>&#10005;</span>
+    <span onClick={()=>dispatch(setModalState())}>&#10005;</span>
     <div>Chose action</div>
     <ActionBtnSection>
        {actionBtn}
     </ActionBtnSection>
    <Actionactivity/>
+   <BottomBtnSection>
+     <CancelBtn onClick={()=>dispatch(setClearActionActivities())}>Cancel</CancelBtn>
+     <SaveBtn onClick={saveclick}>Save</SaveBtn>
+   </BottomBtnSection>   
   </ActionsSection>
   )
 }
@@ -63,6 +71,48 @@ cursor: pointer;
 padding: 5px;
 
 :hover{
+  border: 1px solid black;
+}
+`
+const BottomBtnSection =  styled.div`
+margin-top: 75px;
+display:flex;
+justify-content: flex-end;
+width: 100%;
+div:last-child{
+  margin-left: 20px;
+}
+`
+
+const CancelBtn = styled.div`
+width: 75px;
+height: 30px;
+border: 1px solid lightgrey;
+border-radius: 5px;
+text-align: center;
+line-height: 30px;
+background-color: lightgrey;
+color: grey;
+cursor: pointer;
+: hover{
+  color: black; 
+  background-color: white;
+  border: 1px solid black;
+}
+`
+const SaveBtn = styled.div`
+width: 75px;
+height: 30px;
+border: 1px solid lightgrey;
+border-radius: 5px;
+text-align: center;
+line-height: 30px;
+background-color: lightgrey;
+color: grey;
+cursor: pointer;
+: hover{
+  color: black; 
+  background-color: white;
   border: 1px solid black;
 }
 `

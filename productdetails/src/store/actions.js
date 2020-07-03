@@ -5,13 +5,12 @@ export const chosenActivity= payload => ({
   payload
 });
 
-// export const AVAILABLE_CITIES = "AVAILABLE_CITIES"
+export const IS_MODAL_OPEN = "IS_MODAL_OPEN"
 
-// export const availableCities = () => ({
-//   type: AVAILABLE_CITIES,
+export const modalState = () => ({
+  type: IS_MODAL_OPEN,
 
-// });
-
+});
 
 
 export const ADD_LINK = "ADD_LINK"
@@ -31,12 +30,12 @@ export const addLink = (payload) => ({
 // });
 
 
-// export const AVAILABLE_SPORTS = "AVAILABLE_SPORTS"
+export const CLEAR_ACTION_ACTIVITIES = "CLEAR_ACTION_ACTIVITIES"
 
-// export const availableSports = () => ({
-//   type: AVAILABLE_SPORTS,
+export const clearActionActivities = () => ({
+  type: CLEAR_ACTION_ACTIVITIES,
 
-// });
+});
 
 // export const AVAILABLE_SPORTS_EXACTCITY = "AVAILABLE_SPORTS_EXACTCITY"
 

@@ -2,14 +2,14 @@
 import {
   chosenActivity,
   addLink,
-  // availableSports,
-  // activeCity,
+  modalState,
+  clearActionActivities,
   // availableSportsExactcity,
   // activeActivity,
   CHOSEN_ACTIVITY,
   ADD_LINK,
-  // ACTIVE_CITY,
-  // ACTIVE_ACTIVITY,
+  IS_MODAL_OPEN,
+  CLEAR_ACTION_ACTIVITIES,
   // AVAILABLE_SPORTS,
   // AVAILABLE_SPORTS_EXACTCITY,
 } from './actions';
@@ -18,7 +18,7 @@ import {
 const initialState = {
   chosenActivity: "ADD LINK",
   links: [],
-  // activeCity: [],
+  isModalOpen: true,
   // availableSports: [],
   // availableSportsExactcity: [],
   // activeActivity: "",
@@ -41,24 +41,19 @@ export function productDetailsReduser(store = initialState, { type, payload }) {
         links: [...store.links, payload]
       }
     }
-    // case ACTIVE_ACTIVITY: {
-    //   return {
-    //     ...store,
-    //     activeActivity: payload
-    //   }
-    // }
-    // case AVAILABLE_SPORTS: {
-    //   const activitiesArrey = store.availableClubs.map(({ activity }) => {
-    //     const slugs = activity.map(({ slug }) => { return slug })
-    //     return slugs
-    //   });
-    //   const activities = Array.from(new Set(activitiesArrey.reduce((a, b) => a.concat(b), [])))
-    //   return {
-    //     ...store,
-    //     availableSports: activities
+    case IS_MODAL_OPEN: {
+      return {
+        ...store,
+        isModalOpen: !store.isModalOpen
+      }
+    }
+    case CLEAR_ACTION_ACTIVITIES: {     
+            return {
+        ...store,
+        links: []
 
-    //   }
-    // }
+      }
+    }
     // case AVAILABLE_SPORTS_EXACTCITY: {
     //   const activitiesArrey = payload.map(({ activity }) => {
     //     const slugs = activity.map(({ slug }) => { return slug })
@@ -83,6 +78,10 @@ export const setСhosenActivity = activity => dispatch => {
 
 export const setLink = link => dispatch => {
   dispatch(addLink(link));
+};
+
+export const setModalState = () => dispatch => {
+  dispatch(modalState());
 }
 
 // export const setAvailableClubs = () => dispatch => {
@@ -102,10 +101,6 @@ export const setLink = link => dispatch => {
 
 
 
-// export const setActiveActivity = (activity) => dispatch => {
-//   dispatch(activeActivity(activity));
-// }
-
-// export const setAvailableSportsExactcity = (activeCityClubsList) => dispatch => {
-//   dispatch(availableSportsExactcity(activeCityClubsList));
-// }
+export const setClearActionActivities= () => dispatch => {
+  dispatch(clearActionActivities());
+}

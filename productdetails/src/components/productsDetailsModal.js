@@ -1,11 +1,13 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import styled from 'styled-components';
+import { useSelector} from 'react-redux'
 import itemImg from './productList/itemImg.jpg';
 import {Links} from './links';
 import {Actions} from './actionSection'
 
-export const DetailsModal = props => {
-  const isActive = true
+export const DetailsModal = ()=> {
+ 
+  const isActive =useSelector(state => state.productDetails.isModalOpen);;
 
 
   return (
