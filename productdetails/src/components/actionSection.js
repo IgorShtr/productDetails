@@ -1,6 +1,7 @@
 import React from 'react';
 import {useDispatch, useSelector} from 'react-redux'
 import styled from 'styled-components';
+import {mediaMobile} from './mediaBreakPoints';
 import {setСhosenActivity, setModalState, setClearActionActivities} from '../store/reduser';
 import {Actionactivity} from './activityAction'
 
@@ -25,10 +26,13 @@ const actionBtn = actionsList.map(it=>(
   return(
     <ActionsSection>
     <span onClick={()=>{dispatch(setModalState()); dispatch(setСhosenActivity(""))}}>&#10005;</span>
-    <div>Chose action</div>
+    <ChoseAction>
+      <div>Chose action</div>
     <ActionBtnSection>
        {actionBtn}
-    </ActionBtnSection>
+    </ActionBtnSection >
+       </ChoseAction>
+   
    <Actionactivity/>
    <BottomBtnSection>
      <CancelBtn onClick={()=>dispatch(setClearActionActivities())}>Cancel</CancelBtn>
@@ -41,14 +45,24 @@ const actionBtn = actionsList.map(it=>(
 
 const ActionsSection = styled.div`
 border-left: 1px solid lightgrey;
-padding: 10px;
+// padding: 10px;
 width:270px;
 display: flex;
 flex-direction: column;
 align-items: center; 
 span{
+  margin-right: 10px;
   align-self: flex-end;
   cursor: pointer;
+}
+`
+const ChoseAction = styled.div`
+display: flex;
+flex-direction: column;
+align-items: center; 
+border-bottom: 1px solid lightgrey;
+div:first-child{
+  text-align: center;
 }
 `
 const ActionBtnSection = styled.div`
@@ -56,8 +70,10 @@ width: 90%;
 display: flex;
 flex-wrap: wrap;
 justify-content: space-between;
+${mediaMobile(`
+justify-content: center;
+`)}
 padding: 10px 0;
-border-bottom: 1px solid lightgrey;
 `
 const ActionBtn = styled.div`
 border: 1px solid grey;
@@ -69,16 +85,16 @@ text-align: center;
 margin-top: 10px;
 cursor: pointer;
 padding: 5px;
-
 :hover{
   border: 1px solid black;
 }
 `
 const BottomBtnSection =  styled.div`
 margin-top: 75px;
+padding: 10px;
 display:flex;
 justify-content: flex-end;
-width: 100%;
+width: 90%;
 div:last-child{
   margin-left: 20px;
 }

@@ -10,9 +10,7 @@ export const Actionactivity = ()=>{
   const chosenActivityDitails = (activityName) => {
     switch (activityName) {
       case "ADD LINK":
-        return <div> 
-                <AddLinkAction/>
-              </div>;
+        return <AddLinkAction/> ;
 
       case "ADD VOUTE":
         return <ActivityAction> ADD VOUTE</ActivityAction>;

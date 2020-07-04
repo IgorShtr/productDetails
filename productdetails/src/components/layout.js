@@ -6,10 +6,8 @@ import styled from 'styled-components';
 
 export const Layout = props => {
   return (
-    <MainLayout>
-      <HeaderWraper>
-        {/* <Header /> */}
-      </HeaderWraper>
+    <MainLayout>      
+        {/* <Header /> */}      
       <main className="content">{props.children}</main>
       {/* <Footer /> */}
     </MainLayout>
@@ -27,8 +25,3 @@ height: 100%;
   margin: 50px;
 }
 `;
-const HeaderWraper = styled.div`
-position: fixed;
-top: 0;
-left: 0;
-`

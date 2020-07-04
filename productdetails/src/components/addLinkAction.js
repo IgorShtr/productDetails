@@ -57,9 +57,8 @@ export const AddLinkAction = () => {
 }
 
 const Conteiner = styled.div`
-width: 240px;
+width: 90%;
 height: 190px;
-// padding: 0 10px;
 display: flex;
 flex-direction:column;
 p{
@@ -91,7 +90,6 @@ p:last-child{
 `
 
 const AddBtn = styled.button`
-margin-top: 20px;
 align-self: flex-end;
 width: 50px;
 cursor: pointer;

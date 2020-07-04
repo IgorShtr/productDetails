@@ -15,10 +15,7 @@ import {
 const initialState = {
   chosenActivity: "",
   links: [],
-  isModalOpen: true,
-
-
-
+  isModalOpen: false,
 };
 
 export function productDetailsReduser(store = initialState, { type, payload }) {
