@@ -50,7 +50,7 @@ export function productDetailsReduser(store = initialState, { type, payload }) {
       return store;
 
   }
-}
+};
 
 export const setСhosenActivity = activity => dispatch => {
   dispatch(chosenActivity(activity));
@@ -62,8 +62,8 @@ export const setLink = link => dispatch => {
 
 export const setModalState = () => dispatch => {
   dispatch(modalState());
-}
+};
 
 export const setClearActionActivities = () => dispatch => {
   dispatch(clearActionActivities());
-}
+};

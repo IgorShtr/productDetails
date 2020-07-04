@@ -1,24 +1,24 @@
 import React from 'react';
-import {useSelector} from 'react-redux'
+import { useSelector } from 'react-redux'
 import styled from 'styled-components';
-import {AddLinkAction} from './addLinkAction'
+import { AddLinkAction } from './addLinkAction'
 
-export const Actionactivity = ()=>{
+export const Actionactivity = () => {
   const chosenActivity = useSelector(state => state.productDetails.chosenActivity);
 
 
   const chosenActivityDitails = (activityName) => {
     switch (activityName) {
       case "ADD LINK":
-        return <AddLinkAction/> ;
+        return <AddLinkAction />;
 
       case "ADD VOUTE":
         return <ActivityAction> ADD VOUTE</ActivityAction>;
 
       case "ADD PAIMENT":
-        return  <ActivityAction> ADD PAIMENT</ActivityAction>;
+        return <ActivityAction> ADD PAIMENT</ActivityAction>;
 
-      case  "ADD POLL":
+      case "ADD POLL":
         return <ActivityAction> ADD POLL</ActivityAction>;
 
       default:
@@ -26,7 +26,7 @@ export const Actionactivity = ()=>{
     }
   };
   return (
-<>{chosenActivityDitails(chosenActivity)}</>
+    <>{chosenActivityDitails(chosenActivity)}</>
   )
 }
 

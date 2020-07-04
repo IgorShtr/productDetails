@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import { useDispatch } from 'react-redux'
 import styled from 'styled-components';
-import { setLink } from '../store/reduser'
+import { setLink } from '../store/reduser';
 
 
 export const AddLinkAction = () => {
@@ -26,7 +26,7 @@ export const AddLinkAction = () => {
       setLinkValidation(true);
       setTitleValidation(true)
     }
-    else {     
+    else {
       !linkContent ? setLinkValidation(false) : setLinkValidation(true);
       !titleContent ? setTitleValidation(false) : setTitleValidation(true);
     }
@@ -34,13 +34,13 @@ export const AddLinkAction = () => {
 
   return (
     < Conteiner>
-      <Section>        
+      <Section>
         <p>Link</p>
         <LinkInput
           type="text"
           onChange={(e) => setLinkContent(e.target.value)}
           linkValidation={linkValidation} />
-          { !linkValidation ? <p>Is requered</p> : <p></p>}
+        {!linkValidation ? <p>Is requered</p> : <p></p>}
       </Section>
       <Section>
         <p>Title</p>
@@ -49,12 +49,12 @@ export const AddLinkAction = () => {
           onChange={(e) => setTitleContent(e.target.value)}
           titleValidation={titleValidation}
         />
-       { !titleValidation ? <p>Is requered</p> : <p></p>}
+        {!titleValidation ? <p>Is requered</p> : <p></p>}
       </Section>
       <AddBtn onClick={addLink}>Add</AddBtn>
     </Conteiner>
   )
-}
+};
 
 const Conteiner = styled.div`
 width: 90%;

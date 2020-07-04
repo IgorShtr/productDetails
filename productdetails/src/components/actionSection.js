@@ -1,51 +1,80 @@
 import React from 'react';
-import {useDispatch, useSelector} from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import styled from 'styled-components';
-import {mediaMobile} from './mediaBreakPoints';
-import {setСhosenActivity, setModalState, setClearActionActivities} from '../store/reduser';
-import {Actionactivity} from './activityAction'
+import { mediaMobile } from './mediaBreakPoints';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faThumbsUp } from '@fortawesome/free-solid-svg-icons';
+import { faLink } from '@fortawesome/free-solid-svg-icons';
+import { faLock } from '@fortawesome/free-solid-svg-icons';
+import { faCreditCard } from '@fortawesome/free-solid-svg-icons';
+import { setСhosenActivity, setModalState, setClearActionActivities } from '../store/reduser';
+import { Actionactivity } from './activityAction'
 
-export const  Actions = () =>{
-const actionsList = [ "ADD LINK", "ADD VOUTE", "ADD PAIMENT", "ADD POLL"];
-const dispatch = useDispatch();
-const chosenActivity = useSelector(state => state.productDetails.chosenActivity);
-const linksData = useSelector(state => state.productDetails.links);
-const saveclick = () =>{
-  dispatch(setModalState())
-alert(JSON.stringify(linksData));
-}
+export const Actions = () => {
+  const actionsList = ["ADD LINK", "ADD VOUTE", "ADD PAIMENT", "ADD POLL"];
+  const dispatch = useDispatch();
+  const chosenActivity = useSelector(state => state.productDetails.chosenActivity);
+  const linksData = useSelector(state => state.productDetails.links);
 
-const actionBtn = actionsList.map(it=>(
-  <ActionBtn 
-  onClick={()=>dispatch(setСhosenActivity(it))}
-  isActive = {chosenActivity === it ? true : false }>
-    {it}
-  </ActionBtn>
-))
 
-  return(
+  const iconName = (linkName) => {
+    switch (linkName) {
+      case "ADD LINK":
+        return faLink;
+
+      case "ADD VOUTE":
+        return faThumbsUp;
+
+      case "ADD PAIMENT":
+        return faCreditCard;
+
+      case "ADD POLL":
+        return faLock;
+
+      default:
+        return null;
+    }
+  };
+
+
+  const saveСlick = () => {
+    dispatch(setСhosenActivity(""))
+    dispatch(setModalState());
+    alert(JSON.stringify(linksData));
+
+  }
+
+  const actionBtn = actionsList.map(it => (
+    <ActionBtn
+      onClick={() => dispatch(setСhosenActivity(it))}
+      isActive={chosenActivity === it ? true : false}>
+      <Icon icon={iconName(it)} isActive={chosenActivity === it ? true : false} />
+      {it}
+    </ActionBtn>
+  ))
+
+  return (
     <ActionsSection>
-    <span onClick={()=>{dispatch(setModalState()); dispatch(setСhosenActivity(""))}}>&#10005;</span>
-    <ChoseAction>
-      <div>Chose action</div>
-    <ActionBtnSection>
-       {actionBtn}
-    </ActionBtnSection >
-       </ChoseAction>
-   
-   <Actionactivity/>
-   <BottomBtnSection>
-     <CancelBtn onClick={()=>dispatch(setClearActionActivities())}>Cancel</CancelBtn>
-     <SaveBtn onClick={saveclick}>Save</SaveBtn>
-   </BottomBtnSection>   
-  </ActionsSection>
+      <span onClick={() => { dispatch(setModalState()); dispatch(setСhosenActivity("")) }}>&#10005;</span>
+      <ChooseAction>
+        <div>Choose action</div>
+        <ActionBtnSection>
+          {actionBtn}
+        </ActionBtnSection >
+      </ChooseAction>
+
+      <Actionactivity />
+      <BottomBtnSection>
+        <CancelBtn onClick={() => dispatch(setClearActionActivities())}>Cancel</CancelBtn>
+        <SaveBtn onClick={saveСlick}>Save</SaveBtn>
+      </BottomBtnSection>
+    </ActionsSection>
   )
 }
 
 
 const ActionsSection = styled.div`
 border-left: 1px solid lightgrey;
-// padding: 10px;
 width:270px;
 display: flex;
 flex-direction: column;
@@ -56,17 +85,18 @@ span{
   cursor: pointer;
 }
 `
-const ChoseAction = styled.div`
+const ChooseAction = styled.div`
+width:90%;
 display: flex;
 flex-direction: column;
 align-items: center; 
 border-bottom: 1px solid lightgrey;
-div:first-child{
-  text-align: center;
+>div:first-child{ 
+  font-weight: 500;
+  align-self:flex-start;
 }
 `
 const ActionBtnSection = styled.div`
-width: 90%;
 display: flex;
 flex-wrap: wrap;
 justify-content: space-between;
@@ -88,8 +118,11 @@ padding: 5px;
 :hover{
   border: 1px solid black;
 }
+svg{
+  margin-right: 5px;
+}
 `
-const BottomBtnSection =  styled.div`
+const BottomBtnSection = styled.div`
 margin-top: 75px;
 padding: 10px;
 display:flex;
@@ -131,4 +164,7 @@ cursor: pointer;
   background-color: white;
   border: 1px solid black;
 }
+`
+const Icon = styled(FontAwesomeIcon)`
+color: ${props => props.isActive ? "black" : "#ffca18"}
 `

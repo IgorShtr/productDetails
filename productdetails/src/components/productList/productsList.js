@@ -1,19 +1,19 @@
 import React from 'react';
 import styled from 'styled-components';
-import {useDispatch} from 'react-redux';
-import {setModalState} from '../../store/reduser';
+import { useDispatch } from 'react-redux';
+import { setModalState } from '../../store/reduser';
 import itemImg from './itemImg.jpg';
 
-export const ProductsList = () =>{
-const dispatch = useDispatch();
-  return(
-    <ProductShortInfo>      
+export const ProductsList = () => {
+  const dispatch = useDispatch();
+  return (
+    <ProductShortInfo>
       <img src={itemImg} alt="not faund"></img>
       <div>Body</div>
-<MoreDetailsBtn onClick={()=> dispatch(setModalState())}> More Ditails</MoreDetailsBtn>
-    </ProductShortInfo>  
+      <MoreDetailsBtn onClick={() => dispatch(setModalState())}> More Ditails</MoreDetailsBtn>
+    </ProductShortInfo>
   )
-}
+};
 
 const ProductShortInfo = styled.div`
 width: 50%;
@@ -29,10 +29,10 @@ align-items: center;
  }
 `
 const MoreDetailsBtn = styled.button`
-  margin-top: 20px;
- background-color: lightgrey;
- border: 1px solid grey;
- border-radius: 5px;
+margin-top: 20px;
+background-color: lightgrey;
+border: 1px solid grey;
+border-radius: 5px;
 padding: 10px;
 cursor:pointer;
 `
